@@ -11,7 +11,7 @@ W=(Y_missing-Y);W=W.data;
 W(W==0)=1;W(W<=0)=0;
 T=Y.*W;
 
-%算法迭代求解，R是cp秩的个数，beta是正则化参数，inf_L是确定inf的参数
+%R is the cp rank锛宐eta and inf_L are paremeters
 inf_L=3;
 eps=1e-5;
 beta=90.533;
@@ -57,11 +57,7 @@ A_imputed(:,fix(size(A_true,2)/2)+1:2*fix(size(A_true,2)/2))=Xneed(:,:,2);
 Xr = Full3_data;lXr = log10(Xr+1);
 Xi=A_imputed; lXi = log10(Xi+1);
 MSE_record= norm(lXr-lXi,'fro');
-result=cell(1,6);
-result{1}=A_imputed;result{2}=MSE_record;result{3}=inf_L;result{4}=R;
-result{5}=beta;result{6}=j;
 
- save(['C:\Users\dell\Desktop\tensor procedure\result3-9'], 'result');
  
 
 
