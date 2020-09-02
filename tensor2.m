@@ -1,12 +1,11 @@
-
-
+%%%% Y the input tensor data with dropout, W is the set, in W, the data of Y can be observed.
 T=Y.*W;
-
 %R is the cp rank，beta and inf_L are paremeters
 inf_L=3;
+R;
+beta;
 eps=1e-5;
-beta=90.533;
-R=2;L=cell(1,inf_L);
+L=cell(1,inf_L);
 
 Xold=tensor(zeros(T.size));
 for j=1:100
@@ -34,7 +33,7 @@ Fnew=(1/2)*(norm(T-(1-W).*Xnew))^2+beta*value;
 Xold=Xnew;
 end
 Xopt=Xnew;
-
+%%%%% output: the imputed thnsor
 Xneed=(T+(1-W).*Xopt);
 
 
