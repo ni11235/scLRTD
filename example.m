@@ -39,7 +39,7 @@ beta=8066.0; %If you recalculate, please cancel the comment below
 inf_L=3;eps=1e-5;
 L=cell(1,inf_L);
 
-%%%% Low rank decomposition and get the imputed tensor Xopt
+%%%% Low rank decomposition and get the imputed tensor Xneed
 Xold=tensor(zeros(T.size));
 for j=1:100
     for i=1:inf_L
@@ -65,10 +65,10 @@ Fnew=(1/2)*(norm(T-(1-W).*Xnew))^2+beta*value;
     end
 Xold=Xnew;
 end
-Xopt=Xnew; %%% Xopt is the imputed tensor
-
+Xopt=Xnew; 
 A_imputed=zeros(size(A_true));
-Xneed=(T+(1-W).*Xopt);
+Xneed=(T+(1-W).*Xopt); %%% Xneed is the imputed tensor
+
 A_imputed(:,1:fix(size(A_true,2)/2))=Xneed(:,:,1);
 A_imputed(:,fix(size(A_true,2)/2)+1:2*fix(size(A_true,2)/2))=Xneed(:,:,2);
 
