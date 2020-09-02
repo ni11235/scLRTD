@@ -4,6 +4,8 @@
 % data input and tensor represent
 % A is the dataset 3
 % represent A as a third-order tensor Y
+A=importdata("Raw_names.txt");
+A=A.data;
 Y=tenzeros(size(A,1),fix(size(A,2)/2),2);
 Y_missing=tenzeros(size(A,1),fix(size(A,2)/2),2);
 Y(:,:,1)=A(:,1:fix(size(A,2)/2));
